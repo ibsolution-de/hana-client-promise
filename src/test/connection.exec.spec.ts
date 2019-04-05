@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { expect } from "chai";
-import { HanaClient } from "..";
-import { connectionOption } from "./config";
+import { expect } from 'chai';
+import { HanaClient } from '..';
+import { connectionOption } from './config';
 
 interface CurrentUserResult {
   CURRENT_USER: string;
@@ -15,7 +15,7 @@ interface TestData {
   refreshToken: string;
 }
 
-describe("Test hana client methods", () => {
+describe('Test hana client methods', () => {
   const APP_ID = 99;
   const SQL_SELECT = 'SELECT * FROM "HanaClient.Test";';
 
@@ -45,21 +45,21 @@ describe("Test hana client methods", () => {
     client = null;
   });
 
-  it("insert into Test table", async () => {
+  it('insert into Test table', async () => {
     const results = await client.exec<number>(SQL_INSERT_EXTRA);
-    expect(results).to.be.a("number");
+    expect(results).to.be.a('number');
     expect(results).to.be.eq(1);
   });
 
-  it("select into Test table", async () => {
+  it('select into Test table', async () => {
     const results = await client.exec<TestData[]>(SQL_SELECT);
-    expect(results).to.be.a("Array");
+    expect(results).to.be.a('Array');
     expect(results).to.be.length.gte(1);
     const data = results[0];
-    expect(data).to.be.a("Object");
+    expect(data).to.be.a('Object');
     expect(data)
-      .to.have.property("appId")
+      .to.have.property('appId')
       .to.be.equal(APP_ID);
-    expect(new Date(data.createdDate)).to.be.an("date");
+    expect(new Date(data.createdDate)).to.be.an('date');
   });
 });

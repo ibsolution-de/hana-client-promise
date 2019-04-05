@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { HanaClient } from "../";
-import { connectionOption } from "./config";
+import { HanaClient } from '../';
+import { connectionOption } from './config';
 
-describe("Test Library ", () => {
-  const sql = "select * FROM DUMMY;";
+describe('Test Library ', () => {
+  const sql = 'select * FROM DUMMY;';
 
   before(async () => {
     //
@@ -21,7 +21,7 @@ describe("Test Library ", () => {
     //
   });
 
-  it("Test create address funtion has proper field", async () => {
+  it('Test create address funtion has proper field', async () => {
     let result;
     try {
       const client = new HanaClient(connectionOption);

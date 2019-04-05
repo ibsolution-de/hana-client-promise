@@ -1,4 +1,4 @@
-import { ResultSet, Statement as HanaStatement } from "@ibsolution/types-hana-client";
+import { ResultSet, Statement as HanaStatement } from '@ibsolution/types-hana-client';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Param = any;
@@ -8,7 +8,7 @@ type Params = Param | Param[];
  * Hana Client Statement
  */
 export class Statement {
-  private static ERROR_MSG = "Create statement first";
+  private static ERROR_MSG = 'Create statement first';
   private stmt: HanaStatement;
   public constructor(stmt: HanaStatement) {
     this.stmt = stmt;

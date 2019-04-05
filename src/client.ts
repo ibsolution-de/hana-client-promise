@@ -1,5 +1,5 @@
-import { Connection, ConnectionOptions, createConnection } from "@ibsolution/types-hana-client";
-import { Statement } from "./statement";
+import { Connection, ConnectionOptions, createConnection } from '@ibsolution/types-hana-client';
+import { Statement } from './statement';
 
 interface Options extends ConnectionOptions {
   currentSchema?: string;
@@ -10,7 +10,7 @@ type Param = any;
 type Params = Param | Param[];
 
 export class HanaClient {
-  private static ERROR_MSG = "create hana client connection first";
+  private static ERROR_MSG = 'create hana client connection first';
   private options: Options;
   private connection: Connection;
 
