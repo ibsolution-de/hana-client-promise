@@ -1,0 +1,62 @@
+{
+  "name": "@ibsolution/hana-client-promise",
+  "version": "0.9.7",
+  "description": "",
+  "scripts": {
+    "start": "npm run -s clean && npm run -s build",
+    "test": "npm run test:connection",
+    "clean:dist": "rimraf dist",
+    "clean": "npm run -s clean:dist",
+    "build": "npm run -s clean && npm run -s build:compile",
+    "build:compile": "tsc",
+    "build:install": "tsc -p tsconfig.build.json",
+    "watch": "npm run clean && tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "test:connection": "node ./node_modules/mocha/bin/mocha --require source-map-support/register \"./dist/test/connection*.spec.js\"",
+    "test:statement": "node ./node_modules/mocha/bin/mocha --require source-map-support/register \"./dist/test/statement*.spec.js\""
+  },
+  "keywords": [
+    "sap",
+    "hana",
+    "client",
+    "hana-client",
+    "promises"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:ibsolution-de/hana-client-promise.git"
+  },
+  "author": {
+    "name": "IBsolution GmbH",
+    "url": "https://ibsolution.de/"
+  },
+  "contributors": [
+    {
+      "name": "Nazar Kulyk",
+      "email": "nazar.kulyk@ibsolution.de",
+      "url": "https://github.com/nazarkulyk"
+    }
+  ],
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@sap/hana-client": "^2.3.144",
+    "eslint-config-recommended": "^4.0.0",
+    "@types/chai": "^4.1.7",
+    "@ibsolution/types-hana-client": "^2.3.145",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "rimraf": "^2.6.3",
+    "source-map-support": "^0.5.11",
+    "ts-node": "^8.0.3",
+    "tslint": "^5.15.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.4.1"
+  }
+}

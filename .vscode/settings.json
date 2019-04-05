@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.eslintIntegration": true,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/node_modules/": true,
+    "**/dist/**/*.js.map": { "when": "$(basename)" },
+    "**/dist/**/*.js": { "when": "$(basename).ts" }
+  }
+}

@@ -1,0 +1,10 @@
+src/test
+dist/test
+node_modules
+.vscode
+.eslintrc
+tslint.json
+tsconfig.json
+.gitignore
+.DS_Store
+.git

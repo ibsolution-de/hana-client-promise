@@ -1,0 +1,39 @@
+{
+  "rules": {
+    "indent": [2, 4, { "SwitchCase": 1 }],
+    "quotes": [1, "single", { "avoidEscape": true }],
+    "jsx-quotes": [2, "prefer-single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "strict": [2, "function"],
+    "no-multiple-empty-lines": [2, { "max": 1 }],
+    "max-len": ["error", { "code": 120 }]
+  },
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParameters": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": true,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": true,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "regexUFlag": true,
+    "regexYFlag": true,
+    "restParams": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true,
+    "unicodeCodePointEscapes": true,
+    "globalReturn": true
+  },
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended"
+}
