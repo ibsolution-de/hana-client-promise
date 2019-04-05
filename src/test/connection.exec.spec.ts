@@ -1,14 +1,13 @@
-// tslint:disable:no-unused-expression
-
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { expect } from "chai";
 import { HanaClient } from "..";
 import { connectionOption } from "./config";
 
-interface ICurrentUserResult {
+interface CurrentUserResult {
   CURRENT_USER: string;
 }
 
-interface ITestData {
+interface TestData {
   id: number;
   appId: number;
   createdDate: Date | string;
@@ -53,7 +52,7 @@ describe("Test hana client methods", () => {
   });
 
   it("select into Test table", async () => {
-    const results = await client.exec<ITestData[]>(SQL_SELECT);
+    const results = await client.exec<TestData[]>(SQL_SELECT);
     expect(results).to.be.a("Array");
     expect(results).to.be.length.gte(1);
     const data = results[0];

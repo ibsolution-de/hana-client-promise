@@ -1,5 +1,9 @@
 import { ResultSet, Statement as HanaStatement } from "@ibsolution/types-hana-client";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Param = any;
+type Params = Param | Param[];
+
 /**
  * Hana Client Statement
  */
@@ -14,7 +18,7 @@ export class Statement {
    * execute already prepared statement with parameters
    * @param params one or more values to be send with statement
    */
-  public async exec<T>(params?: any | any[]): Promise<T> {
+  public async exec<T>(params?: Params): Promise<T> {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
@@ -35,7 +39,7 @@ export class Statement {
    * execute query statement
    * @param params one or more parameters to be send with query statement
    */
-  public async execQuery<T>(params?: any | any[]): Promise<T[]> {
+  public async execQuery<T>(params?: Params): Promise<T[]> {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
@@ -62,7 +66,7 @@ export class Statement {
    * execute prepared statement as batch with given list of parameters
    * @param params multiple parameters to be send as back for prepared query
    */
-  public async execBatch<T>(params: any[]): Promise<T> {
+  public async execBatch<T>(params: Params[]): Promise<T> {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }

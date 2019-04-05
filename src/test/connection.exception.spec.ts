@@ -1,5 +1,4 @@
-// tslint:disable:no-unused-expression
-
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { expect } from "chai";
 import { HanaClient } from "..";
 import { connectionOption } from "./config";

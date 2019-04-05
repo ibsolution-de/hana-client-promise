@@ -1,9 +1,9 @@
-// tslint:disable:no-unused-expression
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { expect } from "chai";
 import { HanaClient } from "..";
 import { connectionOption } from "./config";
 
-interface ITestData {
+interface TestData {
   id: number;
   appId: number;
   createdDate: Date | string;
@@ -30,7 +30,7 @@ describe("Test Data Control Method Like: Rollback and Commit", () => {
 
   afterEach(async () => {
     // Delete All Created
-    const result = await client.exec(SQL_CLEANUP_ALL);
+    await client.exec(SQL_CLEANUP_ALL);
     await parallerClient.disconnect();
     await client.disconnect();
     client = null;
@@ -47,11 +47,11 @@ describe("Test Data Control Method Like: Rollback and Commit", () => {
     await client.exec<number>(SQL_INSERT);
 
     // view for second viewer before commit
-    const beforeCommit = await selectStatement.exec<ITestData[]>();
-    const commit = await client.commit();
+    const beforeCommit = await selectStatement.exec<TestData[]>();
+    await client.commit();
 
     // view for second view after commit
-    const afterCommit = await selectStatement.exec<ITestData[]>();
+    const afterCommit = await selectStatement.exec<TestData[]>();
     expect(afterCommit).to.be.not.empty;
     expect(afterCommit.length).to.be.gt(beforeCommit.length);
   });
@@ -64,12 +64,12 @@ describe("Test Data Control Method Like: Rollback and Commit", () => {
     await client.setAutoCommit(false);
     await client.exec<number>(SQL_INSERT);
     // view for second viewer before commit
-    const beforeRollback = await selectStatement.exec<ITestData[]>();
+    const beforeRollback = await selectStatement.exec<TestData[]>();
     // Rollback
     await client.rollback();
 
     // view for second view after commit
-    const afterRollback = await selectStatement.exec<ITestData[]>();
+    const afterRollback = await selectStatement.exec<TestData[]>();
 
     expect(afterRollback.length).to.be.equal(beforeRollback.length);
   });

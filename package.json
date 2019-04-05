@@ -12,7 +12,7 @@
     "build:compile": "tsc",
     "build:install": "tsc -p tsconfig.build.json",
     "watch": "npm run clean && tsc -w",
-    "lint": "eslint src",
+    "lint": "eslint --ext .ts src",
     "test:connection": "node ./node_modules/mocha/bin/mocha --require source-map-support/register \"./dist/test/connection*.spec.js\"",
     "test:statement": "node ./node_modules/mocha/bin/mocha --require source-map-support/register \"./dist/test/statement*.spec.js\""
   },

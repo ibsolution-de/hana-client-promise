@@ -1,9 +1,13 @@
 import { Connection, ConnectionOptions, createConnection } from "@ibsolution/types-hana-client";
-import { Statement } from "./";
+import { Statement } from "./statement";
 
 interface Options extends ConnectionOptions {
   currentSchema?: string;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Param = any;
+type Params = Param | Param[];
 
 export class HanaClient {
   private static ERROR_MSG = "create hana client connection first";
@@ -56,7 +60,7 @@ export class HanaClient {
     );
   }
 
-  public async exec<T>(sql: string, params?: any | any[]): Promise<T> {
+  public async exec<T>(sql: string, params?: Params): Promise<T> {
     if (!this.connection) {
       throw new Error(HanaClient.ERROR_MSG);
     }

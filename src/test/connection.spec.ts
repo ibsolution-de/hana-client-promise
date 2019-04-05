@@ -1,10 +1,9 @@
-// tslint:disable:no-unused-expression
-
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { expect } from "chai";
 import { HanaClient } from "..";
 import { connectionOption } from "./config";
 
-interface ICurrentUserResult {
+interface CurrentUserResult {
   CURRENT_USER: string;
 }
 
@@ -28,7 +27,7 @@ describe("Test hana connection", () => {
 
   it("Get current user SQL should provide one result", async () => {
     const connection = await client.createConnection();
-    const results = await connection.exec<ICurrentUserResult>(SQL_CURRENTUSER);
+    const results = await connection.exec<CurrentUserResult>(SQL_CURRENTUSER);
     expect(results).to.be.an("Array");
     expect(results).to.be.not.empty;
     expect(results).to.have.length(1);
@@ -36,9 +35,7 @@ describe("Test hana connection", () => {
 
   it("Get current user SQL should provide same user as login", async () => {
     const connection = await client.createConnection();
-    const results = await connection.exec<ICurrentUserResult[]>(
-      SQL_CURRENTUSER
-    );
+    const results = await connection.exec<CurrentUserResult[]>(SQL_CURRENTUSER);
     const user = results[0];
     expect(user).to.be.not.empty;
     expect(user)
@@ -50,7 +47,7 @@ describe("Test hana connection", () => {
     const connection = await client.createConnection();
     await connection.disconnect();
     try {
-      await connection.exec<ICurrentUserResult>(SQL_CURRENTUSER);
+      await connection.exec<CurrentUserResult>(SQL_CURRENTUSER);
     } catch (e) {
       expect(e)
         .to.have.property("message")
