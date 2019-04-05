@@ -1,13 +1,39 @@
 {
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["import", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "esnext",
+    "esnext/style-guide",
+    "typescript",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "rules": {
-    "indent": [2, 4, { "SwitchCase": 1 }],
-    "quotes": [1, "single", { "avoidEscape": true }],
-    "jsx-quotes": [2, "prefer-single"],
     "linebreak-style": [2, "unix"],
     "semi": [2, "always"],
     "strict": [2, "function"],
     "no-multiple-empty-lines": [2, { "max": 1 }],
-    "max-len": ["error", { "code": 120 }]
+    "max-len": [
+      "error",
+      {
+        "code": 240,
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "prettier/max-len": [240]
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
@@ -35,5 +61,9 @@
     "node": true,
     "es6": true
   },
-  "extends": "eslint:recommended"
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
 }

@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "incremental": true,
+    "tsBuildInfoFile": "./.buildcache/client.tsbuildinfo",
     "declaration": true,
     "esModuleInterop": true,
     "module": "commonjs",
