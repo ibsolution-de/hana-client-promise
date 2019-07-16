@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { ResultSet, Statement as HanaStatement } from '@ibsolution/types-hana-client';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,7 +10,9 @@ type Params = Param | Param[];
  */
 export class Statement {
   private static ERROR_MSG = 'Create statement first';
+
   private stmt: HanaStatement;
+
   public constructor(stmt: HanaStatement) {
     this.stmt = stmt;
   }
@@ -22,17 +25,16 @@ export class Statement {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
-    return new Promise(
-      (resolve, reject): void => {
-        const myFn = (err: Error, results: T): void => {
-          if (err) {
-            return reject(err);
-          }
-          resolve(results);
-        };
-        params ? this.stmt.exec<T>(Array.isArray(params) ? params : [params], myFn) : this.stmt.exec<T>(myFn);
-      }
-    );
+    return new Promise((resolve, reject): void => {
+      const myFn = (err: Error, results: T): void => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(results);
+      };
+      // eslint-disable-next-line no-unused-expressions
+      params ? this.stmt.exec<T>(Array.isArray(params) ? params : [params], myFn) : this.stmt.exec<T>(myFn);
+    });
   }
 
   /**
@@ -43,23 +45,18 @@ export class Statement {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
-    return new Promise(
-      (resolve, reject): void => {
-        this.stmt.execQuery<T>(
-          params,
-          (err: Error, rs: ResultSet): void => {
-            if (err) {
-              return reject(err);
-            }
-            const rows = [];
-            while (rs.next()) {
-              rows.push(rs.getValues<T>());
-            }
-            resolve(rows);
-          }
-        );
-      }
-    );
+    return new Promise((resolve, reject): void => {
+      this.stmt.execQuery<T>(params, (err: Error, rs: ResultSet): void => {
+        if (err) {
+          return reject(err);
+        }
+        const rows = [];
+        while (rs.next()) {
+          rows.push(rs.getValues<T>());
+        }
+        resolve(rows);
+      });
+    });
   }
 
   /**
@@ -70,19 +67,14 @@ export class Statement {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
-    return new Promise(
-      (resolve, reject): void => {
-        this.stmt.execBatch<T>(
-          params,
-          (err, results): void => {
-            if (err) {
-              return reject(err);
-            }
-            resolve(results);
-          }
-        );
-      }
-    );
+    return new Promise((resolve, reject): void => {
+      this.stmt.execBatch<T>(params, (err, results): void => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(results);
+      });
+    });
   }
 
   /**
@@ -92,10 +84,8 @@ export class Statement {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
-    return new Promise(
-      (resolve, reject): void => {
-        this.stmt.drop((err): void => (err ? reject(err) : resolve()));
-      }
-    );
+    return new Promise((resolve, reject): void => {
+      this.stmt.drop((err): void => (err ? reject(err) : resolve()));
+    });
   }
 }

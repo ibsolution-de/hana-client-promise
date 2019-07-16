@@ -9,3 +9,5 @@ tsconfig.json
 .gitignore
 .DS_Store
 .git
+hana-client.patch
+test*
