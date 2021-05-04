@@ -48,28 +48,30 @@
   "dependencies": {
     "@ibsolution/types-hana-client": "^2.4.128"
   },
+  "peerDependacies": {
+    "@sap/hana-client": "^"
+  },
   "devDependencies": {
-    "@ibsolution/eslint-config-ibsolution-base": "^1.0.0",
-    "@sap/hana-client": "^2.4.126",
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.7",
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "prettier": "^1.18.2",
-    "rimraf": "^2.6.3",
-    "source-map-support": "^0.5.12",
-    "ts-node": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^1.12.0",
-    "@typescript-eslint/parser": "^1.12.0",
-    "eslint": "6.0.1",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-config-recommended": "^4.0.0",
-    "eslint-import-resolver-typescript": "^1.1.1",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.2",
-    "typedoc": "^0.14.2",
-    "typescript": "^3.5.3"
+    "@ibsolution/eslint-config-ibsolution-base": "^1.0.4",
+    "@sap/hana-client": "^2.8.16",
+    "@types/chai": "^4.2.17",
+    "@types/mocha": "^8.2.2",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "source-map-support": "^0.5.19",
+    "ts-node": "^9.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "typedoc": "^0.20.36",
+    "typescript": "^4.2.4"
   }
 }
