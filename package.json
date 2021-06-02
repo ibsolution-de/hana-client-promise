@@ -1,6 +1,6 @@
 {
   "name": "@ibsolution/hana-client-promise",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Promise and Typescript support to @sap/hana-client module",
   "scripts": {
     "start": "npm run -s clean && npm run -s build",
