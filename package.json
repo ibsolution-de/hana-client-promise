@@ -46,7 +46,7 @@
     "@ibsolution/types-hana-client"
   ],
   "dependencies": {
-    "@ibsolution/types-hana-client": "^2.8.20"
+    "@ibsolution/types-hana-client": "^2.8.20-r1"
   },
   "peerDependacies": {
     "@sap/hana-client": "^"
