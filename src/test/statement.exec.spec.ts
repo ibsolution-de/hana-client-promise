@@ -16,10 +16,10 @@ describe('Test statement methods', () => {
   const APP_ID = 99;
   const ACCESS_TOKEN = '123';
   const REFERESH_TOKEN = '321';
-  const SQL_SELECT_STATEMENT = 'SELECT * FROM "HanaClient.Test" where "accessToken" = ?';
-  const SQL_BATCH_INSERT = `INSERT INTO "HanaClient.Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), ?, ?);`;
-  const SQL_INSERT = `INSERT INTO "HanaClient.Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), 123, 321);`;
-  const SQL_CLEANUP_ALL: string = `DELETE FROM "HanaClient.Test" WHERE "appId" = ${APP_ID};`;
+  const SQL_SELECT_STATEMENT = 'SELECT * FROM "HanaClient"."Test" where "accessToken" = ?';
+  const SQL_BATCH_INSERT = `INSERT INTO "HanaClient"."Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), ?, ?);`;
+  const SQL_INSERT = `INSERT INTO "HanaClient"."Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), 123, 321);`;
+  const SQL_CLEANUP_ALL: string = `DELETE FROM "HanaClient"."Test" WHERE "appId" = ${APP_ID};`;
 
   let client: HanaClient;
 

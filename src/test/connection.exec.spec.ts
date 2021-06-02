@@ -17,14 +17,14 @@ interface TestData {
 
 describe('Test hana client methods', () => {
   const APP_ID = 99;
-  const SQL_SELECT = 'SELECT * FROM "HanaClient.Test";';
+  const SQL_SELECT = 'SELECT * FROM "HanaClient"."Test";';
 
-  const SQL_INSERT = `INSERT INTO "HanaClient.Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), 123, 321);`;
-  const SQL_INSERT_EXTRA = `INSERT INTO "HanaClient.Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), 1234, 321);`;
+  const SQL_INSERT = `INSERT INTO "HanaClient"."Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), 123, 321);`;
+  const SQL_INSERT_EXTRA = `INSERT INTO "HanaClient"."Test" ("id", "appId", "createdDate", "accessToken", "refreshToken") VALUES ( "TestId".NEXTVAL, ${APP_ID}, now(), 1234, 321);`;
 
   const SQL_CLEANUP: string[] = [
-    `DELETE FROM "HanaClient.Test" WHERE "appId" = ${APP_ID} AND "accessToken" = 123 and "refreshToken" = 321;`,
-    `DELETE FROM "HanaClient.Test" WHERE "appId" = ${APP_ID} AND "accessToken" = 1234 and "refreshToken" = 321;`
+    `DELETE FROM "HanaClient"."Test" WHERE "appId" = ${APP_ID} AND "accessToken" = 123 and "refreshToken" = 321;`,
+    `DELETE FROM "HanaClient"."Test" WHERE "appId" = ${APP_ID} AND "accessToken" = 1234 and "refreshToken" = 321;`
   ];
 
   let client: HanaClient;
