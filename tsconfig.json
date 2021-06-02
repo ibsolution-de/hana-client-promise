@@ -5,7 +5,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "module": "commonjs",
-    "target": "es2017",
+    "target": "es2018",
     "lib": ["es6", "dom", "esnext"],
     "noImplicitAny": true,
     "moduleResolution": "node",

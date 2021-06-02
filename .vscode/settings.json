@@ -1,30 +1,34 @@
 {
-  "editor.formatOnSave": true,
-  "prettier.eslintIntegration": true,
+  "editor.formatOnSave": false,
   "files.exclude": {
     "**/.DS_Store": true,
     "**/node_modules/": true,
-    "**/dist/**/*.js.map": { "when": "$(basename)" },
-    "**/dist/**/*.js": { "when": "$(basename).ts" }
+    "**/dist/**/*.js.map": {
+      "when": "$(basename)"
+    },
+    "**/dist/**/*.js": {
+      "when": "$(basename).ts"
+    }
   },
-  "eslint.autoFixOnSave": true,
   "eslint.validate": [
     "javascript",
-    "javascriptreact",
-    { "language": "typescript", "autoFix": true },
-    { "language": "typescriptreact", "autoFix": true }
+    "typescript"
   ],
-  "eslint.enable": true,
-  "[javascript]": {
-    "editor.formatOnSave": false
+  "[json]": {
+    "editor.formatOnSave": true,
   },
-  "[javascriptreact]": {
+  "[html]": {
+    "editor.formatOnSave": true,
+  },
+  "[javascript]": {
     "editor.formatOnSave": false
   },
   "[typescript]": {
     "editor.formatOnSave": false
   },
-  "[typescriptreact]": {
-    "editor.formatOnSave": false
-  }
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": false
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
