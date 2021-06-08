@@ -60,7 +60,7 @@ describe('Test statement methods', () => {
   it('Insert into Test table With Parameterized query using method execBatch ', async () => {
     const statement = await client.prepare(SQL_BATCH_INSERT);
     const batchParamArray = [[ACCESS_TOKEN, REFERESH_TOKEN], [1234, 4321]];
-    const result = await statement.execBatch<TestData[]>(batchParamArray);
+    const result = await statement.execBatch(batchParamArray);
     expect(result).to.be.not.null;
     expect(result).to.be.a('number');
     expect(result).to.be.equal(batchParamArray.length);
