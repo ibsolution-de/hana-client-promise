@@ -42,19 +42,28 @@ export class Statement {
    * @param params one or more parameters to be send with query statement
    */
   public async execQuery<T>(params?: Params): Promise<T[]> {
+    const resultSet = await this.execQueryResultSet(params);
+    const rows:T[] = [];
+    while (resultSet.next()) {
+      rows.push(resultSet.getValues<T>());
+    }
+    return rows;
+  }
+
+  /**
+   * execute query statement with ResultSet
+   * @param params one or more parameters to be send with query statement
+   */
+  public async execQueryResultSet(params?: Params): Promise<ResultSet> {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
     return new Promise((resolve, reject): void => {
-      this.stmt.execQuery<T>(params, (err: Error, rs: ResultSet): void => {
+      this.stmt.execQuery(params, (err: Error, rs: ResultSet): void => {
         if (err) {
           return reject(err);
         }
-        const rows = [];
-        while (rs.next()) {
-          rows.push(rs.getValues<T>());
-        }
-        resolve(rows);
+        resolve(rs);
       });
     });
   }
@@ -63,16 +72,16 @@ export class Statement {
    * execute prepared statement as batch with given list of parameters
    * @param params multiple parameters to be send as back for prepared query
    */
-  public async execBatch<T>(params: Params[]): Promise<T> {
+  public async execBatch(params: Params[]): Promise<number> {
     if (!this.stmt) {
       throw new Error(Statement.ERROR_MSG);
     }
     return new Promise((resolve, reject): void => {
-      this.stmt.execBatch<T>(params, (err, results): void => {
+      this.stmt.execBatch<number>(params, (err: Error, rows: number): void => {
         if (err) {
           return reject(err);
         }
-        resolve(results);
+        resolve(rows);
       });
     });
   }
@@ -85,7 +94,7 @@ export class Statement {
       throw new Error(Statement.ERROR_MSG);
     }
     return new Promise((resolve, reject): void => {
-      this.stmt.drop((err): void => (err ? reject(err) : resolve()));
+      this.stmt.drop((err: Error): void => (err ? reject(err) : resolve()));
     });
   }
 }
